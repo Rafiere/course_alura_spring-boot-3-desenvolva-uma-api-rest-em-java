@@ -1,4 +1,4 @@
-package med.voll.api.entities;
+package med.voll.api.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.enums.Speciality;
 
+import java.util.UUID;
+
 @Entity
 @Getter
 @NoArgsConstructor //A JPA exige um construtor sem argumentos para as entidades.
@@ -14,7 +16,7 @@ import med.voll.api.enums.Speciality;
 @EqualsAndHashCode(of = "id") //A comparação será feita pelo atributo "id".
 public class Doctor {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private String id;
 
 	private String nome;
@@ -29,5 +31,19 @@ public class Doctor {
 	/* Não teremos uma tabela específica para o "Address", assim, ele ficará em uma classe
 	* separada, mas dentro da tabela de "Doctor". */
 	@Embedded
-	private Address addressData;
+	private Address address;
+
+	public Doctor(String nome, String email, String crm, Speciality speciality, Address address) {
+		this.id = UUID.randomUUID().toString();
+		this.nome = nome;
+		this.email = email;
+		this.crm = crm;
+		this.speciality = speciality;
+		this.address = address;
+	}
+
+	public static Doctor of(String nome, String email, String crm, Speciality speciality, Address address){
+
+		return new Doctor(nome, email, crm, speciality, address);
+	}
 }

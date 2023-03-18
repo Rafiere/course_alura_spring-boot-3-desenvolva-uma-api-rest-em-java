@@ -1,4 +1,4 @@
-package med.voll.api.requests;
+package med.voll.api.request;
 
 import med.voll.api.common.AddressData;
 import med.voll.api.enums.Speciality;
