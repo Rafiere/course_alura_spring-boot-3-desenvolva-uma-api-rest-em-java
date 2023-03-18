@@ -19,9 +19,11 @@ public class Doctor {
 	@Id
 	private String id;
 
-	private String nome;
+	private String name;
 
 	private String email;
+
+	private String telefone;
 
 	private String crm;
 
@@ -33,17 +35,18 @@ public class Doctor {
 	@Embedded
 	private Address address;
 
-	public Doctor(String nome, String email, String crm, Speciality speciality, Address address) {
+	public Doctor(String name, String email, String crm, String telefone, Speciality speciality, Address address) {
 		this.id = UUID.randomUUID().toString();
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 		this.crm = crm;
+		this.telefone = telefone;
 		this.speciality = speciality;
 		this.address = address;
 	}
 
-	public static Doctor of(String nome, String email, String crm, Speciality speciality, Address address){
+	public static Doctor of(String nome, String email, String crm, String telefone, Speciality speciality, Address address){
 
-		return new Doctor(nome, email, crm, speciality, address);
+		return new Doctor(nome, email, crm, telefone, speciality, address);
 	}
 }
