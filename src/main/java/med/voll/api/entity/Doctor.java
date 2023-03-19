@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.common.AddressData;
 import med.voll.api.enums.Speciality;
 
 import java.util.UUID;
@@ -48,5 +49,20 @@ public class Doctor {
 	public static Doctor of(String nome, String email, String crm, String telefone, Speciality speciality, Address address){
 
 		return new Doctor(nome, email, crm, telefone, speciality, address);
+	}
+
+	public void update(String name, String telefone, AddressData addressData) {
+
+		if(name != null){
+			this.name = name;
+		}
+
+		if(telefone != null){
+			this.telefone = telefone;
+		}
+
+		if(addressData != null){
+			this.address.update(addressData);
+		}
 	}
 }

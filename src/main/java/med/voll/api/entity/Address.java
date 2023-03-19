@@ -4,6 +4,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.common.AddressData;
 
 @Embeddable
 @Getter
@@ -25,5 +26,37 @@ public class Address {
 
 	public static Address of(String logradouro, String bairro, String cep, String numero, String complemento, String cidade, String uf) {
 		return new Address(logradouro, bairro, cep, numero, complemento, cidade, uf);
+	}
+
+	public void update(AddressData addressData) {
+
+		if(addressData.logradouro() != null){
+			this.logradouro = addressData.logradouro();
+		}
+
+		if(addressData.bairro() != null){
+			this.bairro = addressData.bairro();
+		}
+
+		if(addressData.uf() != null){
+			this.uf = addressData.uf();
+		}
+
+		if(addressData.cidade() != null){
+			this.cidade = addressData.cidade();
+		}
+
+		if(addressData.numero() != null){
+			this.numero = addressData.numero();
+		}
+
+		if(addressData.cep() != null){
+			this.cep = addressData.cep();
+		}
+
+		if(addressData.complemento() != null){
+			this.complemento = addressData.complemento();
+		}
+
 	}
 }
