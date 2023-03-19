@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface DoctorRepository extends JpaRepository<Doctor, String> {
 
 	@Query("SELECT new med.voll.api.response.GetDoctorResponse( " +
-	       "d.name, d.email, d.crm, d.speciality) FROM Doctor d ")
+	       "d.id, d.name, d.email, d.crm, d.speciality) FROM Doctor d ")
 	Page<GetDoctorResponse> getDoctors(Pageable pageable);
 }
